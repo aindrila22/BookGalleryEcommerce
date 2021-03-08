@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "serve": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "development": "mix",
+    "watch": "mix watch",
+    "production": "mix --production"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +19,12 @@
     "express-ejs-layouts": "^2.5.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "cross-env": "^7.0.3",
+    "laravel-mix": "^6.0.13",
+    "nodemon": "^2.0.7",
+    "postcss": "^8.1.14",
+    "resolve-url-loader": "^3.1.2",
+    "sass": "^1.32.8",
+    "sass-loader": "^10.1.1"
   }
 }
