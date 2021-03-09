@@ -9,10 +9,6 @@ const PORT = process.env.PORT || 3000;
 //assets
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.render("home");
-});
-
 //set Template engine
 
 app.use(expressLayout);
@@ -20,6 +16,24 @@ app.use(expressLayout);
 app.set("views", path.join(__dirname, "/resources/views"));
 
 app.set("view engine", "ejs");
+
+//routes
+
+app.get("/", (req, res) => {
+  res.render("home");
+});
+
+app.get("/cart", (req, res) => {
+  res.render("customers/cart");
+});
+
+app.get("/register", (req, res) => {
+  res.render("auth/register");
+});
+
+app.get("/login", (req, res) => {
+  res.render("auth/login");
+});
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`);
 });

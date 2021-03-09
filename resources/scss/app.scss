@@ -25,17 +25,17 @@ section.hero{
     background: $secondary;
 }
 section.hero h1{
-    color: $primary1;
+    color: $primary;
 }
 .size{
     background: $secondary; 
 }
 .add-to-cart{
-    border: 2px solid $primary1;
-    color: $primary1;
+    border: 2px solid $primary;
+    color: $primary;
     transition: $smooth;
     &:hover{
-        background: $primary1;
+        background: $primary;
         color: $pure;
         border-color: $pure;
     }
@@ -48,4 +48,32 @@ section.hero h1{
         cursor: pointer;
     }
     
+}
+section.cart{
+background: $secondary;
+.amount{
+    color: $primary;
+}
+}
+.add-to-cart1{
+    
+    background: $primary;
+    color: $pure;
+    transition: $smooth;
+    &:hover{
+        background: $pure;
+        color: $primary;
+        border: 2px solid $primary;
+    }
+}
+section.login{
+    background: $secondary;
+    min-height: calc(100vh - 90px);
+    a{
+        color: $primary;
+        cursor: pointer;
+        &:hover{
+            color: $primary-hover;
+        }
+    }
 }
