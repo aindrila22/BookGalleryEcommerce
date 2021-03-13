@@ -1,0 +1,18 @@
+[
+    {
+        "bookname":"Bedlam",
+        "image":"bedlam.png",
+        "price":"500",
+        "author":"rosenberg"
+    },{
+        "bookname":"Sherlock Holmes",
+        "image":"sherlock.png",
+        "price":"600",
+        "author":"Sir Arthur Conan Doyle"
+    },{
+        "bookname":"Feluda Somogro",
+        "image":"feluda.png",
+        "price":"500",
+        "author":"Satyajit Ray"
+    }
+]
