@@ -343,6 +343,7 @@ section.cart .amount {
   background: #A542EA;
   color: #fff;
   transition: all 0.3s ease-in-out;
+  outline-width: none;
 }
 .add-to-cart1:hover {
   background: #fff;
@@ -365,4 +366,8 @@ section.login a:hover {
 .noty_theme__mint {
   border-radius: 50px !important;
   padding-left: 8px !important;
+}
+
+a.link {
+  color: #9208BB;
 }

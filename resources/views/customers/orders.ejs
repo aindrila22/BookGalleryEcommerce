@@ -1,0 +1,40 @@
+<section class="orders light-section">
+    <div class="container mx-auto pt-12 px-12">
+        <h1 class="font-bold text-lg mb-4">All Orders</h1>
+        <% if(messages.success){ %>
+        <div id="success-alert" class="flex items-center bg-green-500 text-white text-sm font-bold px-4 py-3" role="alert">
+            <img src="/img/order.png" class="w-8 h-8" alt="logo">
+            <p class="text-lg ml-2"><%= messages.success %></p>
+        </div>
+        <% } %>
+        <table class="w-full table-auto bg-white">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 text-left">Orders</th>
+                    <th class="px-4 py-2 text-left">Address</th>
+                    <th class="px-4 py-2 text-left">Contact No.</th>
+                    <th class="px-4 py-2 text-left">Date & Time</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <% if(orders.length) { %>
+                    <% orders.forEach((order) => { %>
+                        <tr>
+                            <td class="border px-4 py-2">
+                                <a class="link" href="/"><%= order._id %></a>
+                            </td>
+                            <td class="border px-4 py-2"><%= order.address %></td>
+                            <td class="border px-4 py-2"><%= order.phone %></td>
+                            <td class="border px-4 py-2"><%= moment(order.createdAt).format('MMMM DD , YYYY  on  hh:mm A') %></td>
+                        </tr>
+                   <% }) %>
+                
+                <% } else { %>
+                    <td class="p-4"><span>No Orders Found</span></td>
+                    <% } %>
+            </tbody>
+        </table>
+
+    </div>
+</section>

@@ -66,6 +66,7 @@ background: $secondary;
     background: $primary1;
     color: $pure;
     transition: $smooth;
+    outline-width: none;
     &:hover{
         background: $pure;
         color: $primary;
@@ -87,4 +88,7 @@ section.login{
 .noty_theme__mint{
     border-radius: 50px!important;
     padding-left: 8px!important;
+}
+a.link{
+    color: $primary;
 }
