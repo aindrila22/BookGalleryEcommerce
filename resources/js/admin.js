@@ -1,7 +1,8 @@
 import axios from "axios";
 import moment from "moment";
+import Noty from "noty";
 
-const initAdmin = () => {
+const initAdmin = (socket) => {
   const orderTableBody = document.querySelector("#orderTable");
   let orders = [];
   let markup;
@@ -47,7 +48,7 @@ const initAdmin = () => {
       <td class="border px-4 py-2">${order.phone}</td>
       <td class="border px-4 py-2">
        <div class="inline-block relative w-64">
-         <form action="/admin/order/status" method="POST">
+         <form action="/admin/orders/status" method="POST">
            <input type="hidden" name="orderId" value="${order._id}">
            <select name="status" onChange="this.form.submit()" class="block appearance-none w-full bg-white border border-gray-400
            border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:outline-shadow">
@@ -82,6 +83,18 @@ const initAdmin = () => {
       })
       .join("");
   }
+
+  socket.on("orderPlaced", (data) => {
+    new Noty({
+      type: "warning",
+      timeout: 1000,
+      text: "New Order Placed",
+      progressBar: false,
+    }).show();
+    orders.unshift(data);
+    orderTableBody.innerHTML = "";
+    orderTableBody.innerHTML = generateMarkup(orders);
+  });
 };
 
 export default initAdmin;
