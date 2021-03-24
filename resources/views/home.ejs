@@ -1,26 +1,26 @@
 
     <section class="hero px-6 py-8">
-        <div class="container mx-auto flex items-center justify-between">
-            <div class="w-1/2 px-12">
-                <h6 class="text-2xl"><em>Are you a Book Lover?</em></h6>
-                <h1 class="text-6xl font-bold">Join BookKorner !</h1>
+        <div class="container mx-auto flex items-center justify-between flex-col md:flex-row">
+            <div class=" w-full h-1/2 md:w-1/2  md:px-12">
+                <img src="/img/img3.svg" class="homeImg" alt="book">
+            </div>
+            <div class="md:w-1/2 md:py-4 md:px-12">
+                <h6 class="text-sm sm:text-lg md:text-2xl pt-2 pb-2"><em>Are you a Book Lover?</em></h6>
+                <h1 class="text-2xl md:text-5xl font-bold">CheckOut BookGallery</h1>
                 <button class="add-to-cart1 mt-8 py-2 px-8 rounded-full flex items-center font-bold">
                     Get Started
                       </button>
-            </div>
-            <div class="w-1/2  px-12">
-                <img src="/img/img3.svg" alt="book">
             </div>
         </div>
     </section>
     <section class="menu container mx-auto py-8 px-10">
         <h1 class="text-xl font-bold mb-8">All Books</h1>
-        <div class="grid grid-cols-4 gap-x-3 gap-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-3 gap-y-4">
 
             <% books.forEach(function(books){ %>
 
-                <div class="card w-64 py-4 px-6">
-                    <img src="/img/<%= books.image%>" class="w-60 mb-4 mx-auto" alt="">
+                <div class="card w-full md:w-50 pb-6 ">
+                    <img src="/img/<%= books.image%>" class="w-1/2 sm:w-52 pt-2 mb-4 mx-auto" alt="">
                     <div class="text-center">
                         <h2 class="mb-4 text-lg"><%= books.bookname%></h2>
                         <span class="size py-1 px-4 rounded-full uppercase text-xs">by <%= books.author%></span>

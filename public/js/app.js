@@ -1880,7 +1880,7 @@ var initAdmin = function initAdmin(socket) {
 
   function generateMarkup(orde) {
     return orde.map(function (order) {
-      return "  \n      <tr>\n      <td class=\"border px-4 py-2 text-green-900\">\n      <p>".concat(order._id, "</p>\n      <div>").concat(renderItems(order.items), "</div>\n      </td>\n      <td class=\"border px-4 py-2\">").concat(order.customerId.fullname, "</td>\n      <td class=\"border px-4 py-2\">").concat(order.address, "</td>\n      <td class=\"border px-4 py-2\">").concat(order.phone, "</td>\n      <td class=\"border px-4 py-2\">\n       <div class=\"inline-block relative w-64\">\n         <form action=\"/admin/orders/status\" method=\"POST\">\n           <input type=\"hidden\" name=\"orderId\" value=\"").concat(order._id, "\">\n           <select name=\"status\" onChange=\"this.form.submit()\" class=\"block appearance-none w-full bg-white border border-gray-400\n           border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:outline-shadow\">\n            <option value=\"order_placed\" ").concat(order.status === "order_placed" ? "selected" : "", "> Placed </option>\n            <option value=\"confirmed\" ").concat(order.status === "confirmed" ? "selected" : "", "> Confirmed </option>\n            <option value=\"packaged\" ").concat(order.status === "packaged" ? "selected" : "", "> On The way </option>\n            <option value=\"delivered\" ").concat(order.status === "delivered" ? "selected" : "", "> Delivered </option>\n            <option value=\"completed\" ").concat(order.status === "completed" ? "selected" : "", "> Completed </option>  \n           </select>\n         </form>\n         <div class=\"pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700\">\n         <svg class=\"fill-current h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\">\n         <path d=\"M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z\"\n         </svg>\n       </div>\n      </td>\n\n      <td class=\"border px-4 py-2\">\n      ").concat(moment__WEBPACK_IMPORTED_MODULE_1___default()(order.createdAt).format("MMMM DD , YYYY  on  hh:mm A"), "\n      </td>\n      </tr>  ");
+      return "  \n      <tr>\n      <td class=\"border px-4 py-2 text-green-900\">\n      <p>".concat(order._id, "</p>\n      <div>").concat(renderItems(order.items), "</div>\n      </td>\n      <td class=\"border px-4 py-2\">").concat(order.customerId.fullname, "</td>\n      <td class=\"border px-4 py-2\">").concat(order.address, " <br> P.No: ").concat(order.phone, " </td>\n      <td class=\"border px-4 py-2\">\n       <div class=\"inline-block relative w-64\">\n         <form action=\"/admin/orders/status\" method=\"POST\">\n           <input type=\"hidden\" name=\"orderId\" value=\"").concat(order._id, "\">\n           <select name=\"status\" onChange=\"this.form.submit()\" class=\"block appearance-none w-full bg-white border border-gray-400\n           border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:outline-shadow\">\n            <option value=\"order_placed\" ").concat(order.status === "order_placed" ? "selected" : "", "> Placed </option>\n            <option value=\"confirmed\" ").concat(order.status === "confirmed" ? "selected" : "", "> Confirmed </option>\n            <option value=\"packaged\" ").concat(order.status === "packaged" ? "selected" : "", "> On The way </option>\n            <option value=\"delivered\" ").concat(order.status === "delivered" ? "selected" : "", "> Delivered </option>\n            <option value=\"completed\" ").concat(order.status === "completed" ? "selected" : "", "> Completed </option>  \n           </select>\n         </form>\n         <div class=\"pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700\">\n         <svg class=\"fill-current h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\">\n         <path d=\"M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z\"\n         </svg>\n       </div>\n      </td>\n\n      <td class=\"border px-4 py-2\">\n      ").concat(moment__WEBPACK_IMPORTED_MODULE_1___default()(order.createdAt).format("MMMM DD , YYYY  on  hh:mm A"), "\n      </td>\n      </tr>  ");
     }).join("");
   }
 
@@ -1997,8 +1997,7 @@ function updateStatus(orders) {
 
 updateStatus(orders); //Socket
 
-var socket = io();
-(0,_admin__WEBPACK_IMPORTED_MODULE_3__.default)(socket); //Join
+var socket = io(); //Join
 
 if (orders) {
   socket.emit("join", "order_".concat(orders._id));
@@ -2007,6 +2006,7 @@ if (orders) {
 var adminAreaPath = window.location.pathname;
 
 if (adminAreaPath.includes("admin")) {
+  (0,_admin__WEBPACK_IMPORTED_MODULE_3__.default)(socket);
   socket.emit("join", "adminRoom");
 }
 

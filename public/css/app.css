@@ -298,8 +298,13 @@ nav li a:hover {
   font-size: 18px;
 }
 
+.booklist {
+  max-width: 400px;
+}
+
 section.hero {
   background: #f8f8f8;
+  width: 100%;
 }
 
 section.hero h1 {
@@ -480,4 +485,29 @@ section.status {
   float: right;
   font-size: 14px;
   color: #9208BB;
+}
+
+@media (max-width: 1060px) {
+  .container {
+    max-width: 90%;
+  }
+
+  .table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 576px) {
+  .status-box ul li span::before {
+    font-size: 30px;
+  }
+
+  .status-box ul li.current {
+    font-size: larger;
+  }
+
+  .status-box ul li span {
+    padding-left: 25px;
+  }
 }
