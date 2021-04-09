@@ -5,6 +5,15 @@ function cartController() {
     index(req, res) {
       res.render("customers/cart");
     },
+    clearsCart(req, res) {
+      if (req.session.cart) {
+        delete req.session.cart;
+        return res.json({
+          message: "Orders Cleared ",
+        });
+        // return res.redirect("/");
+      }
+    },
 
     update(req, res) {
       // let cart = {

@@ -24,6 +24,7 @@ function initRoutes(app) {
 
   app.get("/cart", cartController().index);
   app.post("/update-cart", cartController().update);
+  app.delete("/cart", cartController().clearsCart);
 
   //Customer routes
   app.post("/orders", auth, orderController().store);

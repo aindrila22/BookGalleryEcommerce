@@ -2,15 +2,16 @@ import axios from "axios";
 import moment from "moment";
 import Noty from "noty";
 import initAdmin from "./admin";
+import { initStripe } from "./stripe";
 
 let addToCart = document.querySelectorAll(".add-to-cart");
+let clearCart = document.querySelectorAll("#clear-cart");
 let cartCounter = document.querySelector("#cartCounter");
 
 function updateCart(books) {
   axios
     .post("/update-cart", books)
     .then((res) => {
-      console.log(res);
       cartCounter.innerText = res.data.totalQty;
       new Noty({
         type: "information",
@@ -36,6 +37,31 @@ addToCart.forEach((btn) => {
   });
 });
 
+function clearsCart() {
+  axios
+    .delete("/cart")
+    .then((res) => {
+      new Noty({
+        type: "warning",
+        timeout: 1000,
+        text: "Cart is cleared",
+        progressBar: false,
+      }).show();
+    })
+    .catch((err) => {
+      new Noty({
+        type: "error",
+        timeout: 1000,
+        text: "Something went wrong",
+        progressBar: false,
+      }).show();
+    });
+}
+clearCart.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    clearsCart();
+  });
+});
 const alertMsg = document.querySelector("#success-alert");
 if (alertMsg) {
   setTimeout(() => {
@@ -74,6 +100,8 @@ function updateStatus(orders) {
   });
 }
 updateStatus(orders);
+
+initStripe();
 
 //Socket
 let socket = io();

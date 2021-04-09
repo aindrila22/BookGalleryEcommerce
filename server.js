@@ -16,9 +16,7 @@ const PORT = process.env.PORT || 3000;
 
 //database
 
-const uri = "mongodb://localhost/BookKorner";
-
-mongoose.connect(uri, {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -39,7 +37,7 @@ app.use(
     secret: process.env.COOKIE_SECRET,
     resave: false,
     store: mongoStore.create({
-      mongoUrl: uri,
+      mongoUrl: process.env.MONGO_URI,
       collection: "sessions",
     }),
     saveUninitialized: false,
@@ -80,6 +78,9 @@ app.set("view engine", "ejs");
 //routes
 
 require("./routes/web")(app);
+app.use((req, res) => {
+  res.status(404).render("errors/404Page");
+});
 
 const server = app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`);

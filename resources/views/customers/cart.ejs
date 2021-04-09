@@ -4,6 +4,7 @@
     <div class="flex items-center border-b border-gray-300 pb-4">
         <img src="/img/cart3.png" class="w-10 h-10" alt="cart">
         <h1 class="font-bold ml-4 text-2xl">Order Summary</h1>
+        <button class="add-to-cart1 mt-8 py-2 px-8 rounded-full  font-bold" id="clear-cart">Clear Cart</button>
   
     </div>
  
@@ -30,10 +31,24 @@
     </div>
     <% if(user) { %>
     <div>
-        <form action="/orders" method="POST" class="mt-12 mb-12">
-            <input name="phone" class="border border-gray-400 p-2 md:w-1/2 mb-4 " type="tel" maxlength="10"  placeholder="Phone No">
-            <input name="address" class="border border-gray-400 p-2 sm:w-1/2 " type="text" placeholder="Address">
-             <div>
+        <form action="/orders" method="POST" class="mt-12 mb-12" id="payment">
+            <div class="relative w-3/4 md:w-1/2 mr-3 sm:mr-0 mb-4 ml-auto">
+                <select id="paymentType" name="paymentType" class="block appearance-none w-full bg-white border border-gray-400
+                 hover:border-gray-500 px-4 py-3 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
+                    
+                    <option value="cod">Cash On Delivery</option>
+                    <option value="card">Pay with Card</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                    </svg>
+                </div>
+            </div>
+            <input name="phone" class="relative border border-gray-400 p-2 w-1/2 mb-4 " type="tel" maxlength="10"  placeholder="Phone No"><br>
+            <input name="address" class="border border-gray-400 p-2 w-1/2 mb-4 " type="text" placeholder="Address">
+             <div class="mt-4">
+                 <div id="card-element"></div>
                 <button class="add-to-cart1 mt-8 py-2 px-8 rounded-full  font-bold" type="submit">Order Now</button>
             </div> 
         </form>
