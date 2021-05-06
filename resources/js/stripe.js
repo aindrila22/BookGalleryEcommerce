@@ -29,12 +29,16 @@ export async function initStripe() {
   //   card.mount("#card-element");
   // }
   //mountWidget();
+
   const paymentType = document.querySelector("#paymentType");
   if (!paymentType) {
     return;
   }
   paymentType.addEventListener("change", (e) => {
     if (e.target.value === "card") {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      document.body.appendChild(script);
       card = new CardWidget(stripe);
       card.mount();
       //mountWidget();
